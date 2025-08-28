@@ -1,0 +1,43 @@
+{% assign file_path = "_commands/" | append: include.filename %}
+{% assign file_content_lines = site.static_files | where: "path", file_path %}
+{% if file_content_lines.size == 0 %}
+  {% assign file_path = "_agents/" | append: include.filename %}
+{% endif %}
+
+{% comment %} Since we can't read files directly in Jekyll, we'll reconstruct the content {% endcomment %}
+{% assign raw_content = "---
+layout: " | append: page.layout | append: "
+title: \"" | append: page.title | append: "\"
+description: \"" | append: page.description | append: "\"" %}
+
+{% if page.model %}
+{% assign raw_content = raw_content | append: "
+model: \"" | append: page.model | append: "\"" %}
+{% endif %}
+
+{% if page.color %}
+{% assign raw_content = raw_content | append: "
+color: \"" | append: page.color | append: "\"" %}
+{% endif %}
+
+{% if page.category %}
+{% assign raw_content = raw_content | append: "
+category: \"" | append: page.category | append: "\"" %}
+{% endif %}
+
+{% if page.specialization %}
+{% assign raw_content = raw_content | append: "
+specialization: \"" | append: page.specialization | append: "\"" %}
+{% endif %}
+
+{% if page.argument-hint %}
+{% assign raw_content = raw_content | append: "
+argument-hint: \"" | append: page.argument-hint | append: "\"" %}
+{% endif %}
+
+{% assign raw_content = raw_content | append: "
+---
+
+" | append: content %}
+
+<pre><code class="language-markdown" id="file-content">{{ raw_content | escape }}</code></pre>

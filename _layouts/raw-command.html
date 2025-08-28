@@ -28,7 +28,7 @@ layout: default
             <span class="file-size">{{ page.content | size }} characters</span>
         </div>
         <div class="file-content-container">
-            <pre><code class="language-markdown" id="file-content">{{ page.content | escape }}</code></pre>
+            <pre><code class="language-markdown" id="file-content">{{ page.raw_content | escape }}</code></pre>
         </div>
     </div>
     
