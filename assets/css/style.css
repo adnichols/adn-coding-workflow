@@ -48,6 +48,18 @@ body {
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.phase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
 }
 
 .phase:hover {
@@ -77,16 +89,33 @@ body {
 }
 
 .phase-number {
-    background: #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     margin-right: 15px;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    font-size: 16px;
+    position: relative;
+}
+
+.phase-number::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: -1;
+    opacity: 0.1;
 }
 
 .expand-icon {
@@ -181,10 +210,58 @@ body {
 }
 
 .connection-line {
-    width: 2px;
-    height: 20px;
+    width: 4px;
+    height: 40px;
     background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-    margin: 0 auto;
+    margin: 10px auto;
+    position: relative;
+    border-radius: 2px;
+}
+
+.connection-line::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid #764ba2;
+}
+
+.connection-line::before {
+    content: '↓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    animation: flowPulse 2s ease-in-out infinite;
+}
+
+@keyframes flowPulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+/* Add flow indication on hover */
+.phase:hover + .connection-line {
+    background: linear-gradient(180deg, #48bb78 0%, #38a169 100%);
+}
+
+.phase:hover + .connection-line::after {
+    border-top-color: #38a169;
 }
 
 .quality-checks {
