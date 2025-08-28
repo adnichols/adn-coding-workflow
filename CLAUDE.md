@@ -1,0 +1,56 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Repository Purpose
+
+This repository contains documentation for a structured AI-assisted software development workflow using Claude Code. The core asset is `claude-desktop-coding-workflow.html` - an interactive HTML documentation system that outlines a comprehensive development methodology with specialized agents and structured commands.
+
+## Architecture Overview
+
+The workflow system is built around six main phases:
+
+1. **Idea & Initial Specification** - Converting concepts into structured requirements
+2. **Architecture Review & Planning** - Using specialized agents to create implementation plans
+3. **Task List Generation** - Breaking down plans into executable steps
+4. **Automated Execution** - Implementing with safety protocols and git management
+5. **Quality Review & Integration** - Multi-layered AI and human review
+6. **Final Integration** - Human verification and merge
+
+## Key Workflow Commands
+
+The system includes several structured commands embedded in the HTML documentation:
+
+### Feature Development Path
+- `user:create-prd.md` - Generate PRD with interactive clarification questions
+- `user:generate-tasks.md [prd-file]` - Two-phase task generation from PRD
+- `user:process-tasks.md [task-file] [NOSUBCONF]` - Execute feature tasks with safety protocols
+
+### Refactoring Path  
+- `simplify:create-plan.md [target-area]` - Create evidence-based refactoring plans using specialized agents
+- `simplify:process-plan.md [plan-file] [NOSUBCONF]` - Execute cleanup plans with functionality preservation
+
+### Quality Assurance
+- `quality-review` - Automated review of complete changesets
+- `pr-review` - Pull request review
+
+## Specialized Agents
+
+The workflow leverages two key specialized agents:
+
+- **@simplify-planner (Opus)** - Code archaeology specialist for evidence-based complexity reduction
+- **@quality-reviewer** - Production risk assessor focusing on real failure scenarios
+
+## File Structure
+
+- `claude-desktop-coding-workflow.html` - Complete interactive workflow documentation
+- `/tasks/` - Directory for generated PRDs, task lists, and simplification plans (created as needed)
+
+## Development Notes
+
+This is a documentation repository focused on workflow methodology rather than active code development. The HTML file is self-contained and includes all necessary CSS and JavaScript for the interactive interface.
+
+When working with this repository:
+- The HTML file contains embedded workflow commands and agent configurations
+- No build, test, or lint commands are applicable as this is pure documentation
+- Any modifications should preserve the interactive functionality and complete workflow documentation
