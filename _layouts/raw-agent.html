@@ -26,10 +26,15 @@ layout: default
         
     </div>
     
+    <div class="file-actions" style="margin-bottom: 20px; padding: 20px; background: #f8fafc; border-radius: 10px; border: 2px solid #e2e8f0;">
+        <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy Agent Config</button>
+        <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}.md" class="btn btn-secondary">💾 Download Config</a>
+    </div>
+    
     <div class="usage-info">
         <h3>🤖 How to Set Up This Agent</h3>
         <ol class="usage-steps">
-            <li><strong>Copy the config:</strong> Click "📋 Copy Agent Config" below the code block</li>
+            <li><strong>Copy the config:</strong> Click "📋 Copy Agent Config" above</li>
             <li><strong>Navigate to agents directory:</strong> Go to <code>~/.claude/agents/</code> (or your Claude Code agents directory)</li>
             <li><strong>Create the config file:</strong> Create <code>{{ page.title }}.md</code></li>
             <li><strong>Paste the content:</strong> Paste the copied configuration into the file</li>
@@ -53,10 +58,6 @@ layout: default
         </div>
         <div class="file-content-container">
             <pre><code class="language-markdown" id="file-content">{{ page.raw_content | escape }}</code></pre>
-        </div>
-        <div class="file-actions">
-            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy Agent Config</button>
-            <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}.md" class="btn btn-secondary">💾 Download Config</a>
         </div>
     </div>
     

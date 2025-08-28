@@ -18,10 +18,15 @@ layout: default
         
     </div>
     
+    <div class="file-actions" style="margin-bottom: 20px; padding: 20px; background: #f8fafc; border-radius: 10px; border: 2px solid #e2e8f0;">
+        <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy File Content</button>
+        <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}" class="btn btn-secondary">💾 Download File</a>
+    </div>
+    
     <div class="usage-info">
         <h3>📖 How to Use</h3>
         <ol class="usage-steps">
-            <li><strong>Copy the content:</strong> Click "📋 Copy File Content" below the code block</li>
+            <li><strong>Copy the content:</strong> Click "📋 Copy File Content" above</li>
             <li><strong>Create the file:</strong> In your project root, create <code>{{ page.title }}</code></li>
             <li><strong>Paste the content:</strong> Paste the copied content into the file</li>
             <li><strong>Use in Claude Code:</strong> The command will be available as <code>/{{ page.title | remove: '.md' }}</code></li>
@@ -49,10 +54,6 @@ layout: default
         </div>
         <div class="file-content-container">
             <pre><code class="language-markdown" id="file-content">{{ page.raw_content | escape }}</code></pre>
-        </div>
-        <div class="file-actions">
-            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy File Content</button>
-            <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}" class="btn btn-secondary">💾 Download File</a>
         </div>
     </div>
     
