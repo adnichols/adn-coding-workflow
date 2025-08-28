@@ -1,0 +1,11 @@
+- name: "simplify-planner"
+  description: "Code archaeology specialist agent (Opus model)"
+  model: "opus"
+  color: "purple"
+  specialization: "Code cleanup specialist - identifies complexity accumulation, deprecated code, and simplification opportunities while guaranteeing core functionality preservation"
+  
+- name: "quality-reviewer"
+  description: "Production risk assessment agent"
+  model: "inherit"
+  color: "orange"
+  specialization: "Reviews code for real issues (security, data loss, performance)"

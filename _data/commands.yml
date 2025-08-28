@@ -1,0 +1,19 @@
+- name: "user:create-prd.md"
+  description: "Creates PRD with interactive clarification questions"
+  category: "feature"
+  
+- name: "user:generate-tasks.md"
+  description: "Two-phase task generation from PRD"
+  category: "feature"
+  
+- name: "user:process-tasks.md"
+  description: "Executes feature tasks with safety protocols"
+  category: "feature"
+  
+- name: "simplify:create-plan.md"
+  description: "Creates evidence-based refactoring plans"
+  category: "refactor"
+  
+- name: "simplify:process-plan.md"
+  description: "Executes refactoring plans with safety validation"
+  category: "refactor"

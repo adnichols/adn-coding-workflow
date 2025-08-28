@@ -1,0 +1,52 @@
+title: "Claude Code Development Workflow"
+description: "A systematic approach to AI-assisted software development"
+url: "https://anichols.github.io"
+baseurl: "/adn-coding-workflow"
+
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "commands"
+      type: "pages"
+    values:
+      layout: "command"
+  - scope:
+      path: "agents"
+      type: "pages"
+    values:
+      layout: "agent"
+
+collections:
+  commands:
+    output: true
+    permalink: /commands/:name/
+  agents:
+    output: true
+    permalink: /agents/:name/
+
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+  hard_wrap: false
+
+exclude:
+  - README.md
+  - claude-desktop-coding-workflow.html
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles

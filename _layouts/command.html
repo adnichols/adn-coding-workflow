@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<div class="command-page">
+    <div class="command-header">
+        <h1>{{ page.title }}</h1>
+        <p class="command-description">{{ page.description }}</p>
+        
+        {% if page.category %}
+        <div class="command-category">
+            <span class="category-badge {{ page.category }}">
+                {% if page.category == 'feature' %}🚀 Feature Development{% endif %}
+                {% if page.category == 'refactor' %}🔧 Refactoring{% endif %}
+            </span>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="command-content">
+        {{ content }}
+    </div>
+    
+    <div class="command-actions">
+        <a href="{{ '/commands/' | relative_url }}" class="btn btn-secondary">← Back to Commands</a>
+        <button class="btn btn-primary copy-button" onclick="copyPageContent()">Copy Command</button>
+    </div>
+</div>
+
+<script>
+function copyPageContent() {
+    const codeBlocks = document.querySelectorAll('pre code');
+    let content = '';
+    
+    codeBlocks.forEach(block => {
+        content += block.textContent + '\n\n';
+    });
+    
+    navigator.clipboard.writeText(content).then(() => {
+        const button = document.querySelector('.copy-button');
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 2000);
+    });
+}
+</script>

@@ -1,0 +1,133 @@
+- number: "1"
+  title: "Idea & Initial Specification"
+  content: |
+    Every development cycle starts with an idea that gets refined into a formal specification.
+
+    **Process:**
+    - Start with a high-level idea or concept
+    - Use Claude (desktop or Claude Code) to expand into detailed specification
+    - Request structured Markdown documentation
+    - Review and refine the specification
+
+    **Key Files:**
+    - specification.md - Initial idea documentation
+    - requirements.md - Refined requirements
+
+    **Flexibility:** This step can be done in Claude desktop or Claude Code depending on your preference and current context.
+
+- number: "🤖"
+  title: "Specialized Agents & Commands"
+  content: |
+    The workflow leverages specialized agents and structured commands for different aspects of development.
+
+    **Command Structure:**
+    - **user:** Main feature development commands
+    - **simplify:** Code refactoring and cleanup commands
+    - **Arguments:** Support file paths and options like NOSUBCONF
+
+    **Specialized Agents:**
+    - **@simplify-planner (Opus):** Code archaeology specialist - identifies complexity accumulation, dead code paths, over-abstractions
+    - **@quality-reviewer:** Production risk assessor - focuses on data loss, security vulnerabilities, performance killers, concurrency bugs
+    - **Evidence-Based Approach:** Uses grep/glob analysis, deprecation markers, usage patterns for all decisions
+    - **ADR Documentation:** Creates Architecture Decision Records with cleanup rationale and safety evidence
+
+- number: "2"
+  title: "Architecture Review & Planning"
+  content: |
+    The specification is reviewed by specialized architecture agents and turned into actionable plans.
+
+    **New Feature Path:**
+    - Command: user:create-prd.md
+    - Clarifying Questions: Claude asks structured questions with letter/number lists for easy responses
+    - Structured PRD: Generates comprehensive PRD with goals, user stories, requirements, success metrics
+    - Junior Dev Ready: Assumes target audience is a junior developer - explicit and unambiguous
+    - Interactive Refinement: Iterative process to ensure specification captures the full intent
+
+    **Refactoring Path:**
+    - Command: simplify:create-plan.md
+    - @simplify-planner (Opus): Code archaeology specialist, evidence-based cleanup recommendations
+    - @quality-reviewer: Reviews plan for production failure risks, safety validation
+    - Unconditional Preservation: Guarantees identical user-facing behavior after cleanup
+    - Safety Circuit Breakers: Stops for confirmation on risky changes (>3 packages, core interfaces)
+
+    **Output Files:**
+    - /tasks/prd-[feature-name].md - Product Requirements Document
+    - /tasks/simplify-plan-[area-name].md - Refactoring plan with safety protocols
+
+- number: "3"
+  title: "Task List Generation"
+  content: |
+    Plans are broken down into executable task lists using a sophisticated two-phase approach with different workflows for each path.
+
+    **New Feature Tasks:**
+    - Command: user:generate-tasks.md
+    - Phase 1: Generate ~5 high-level parent tasks
+    - Confirmation: Present tasks and wait for user "Go" approval
+    - Phase 2: Break down each parent into detailed sub-tasks
+    - Codebase Analysis: Reviews existing infrastructure and patterns
+
+    **Refactoring Tasks:**
+    No additional step needed! The plan created in step 2 already serves as a comprehensive task checklist with four phases:
+    - P1: Preparation and Safety Verification
+    - P2: Plan Review and Validation
+    - P3: Implementation Steps
+    - P4: Completion and Documentation
+
+    **Generated Files:**
+    - /tasks/tasks-[prd-file-name].md - Detailed implementation tasks with sub-tasks
+    - Relevant files section - Lists all files that need creation/modification
+
+- number: "4"
+  title: "Automated Execution"
+  content: |
+    The core implementation phase with sophisticated safety checks, git management, and resumable execution.
+
+    **Feature Implementation:**
+    - Command: user:process-tasks.md [task-file]
+    - Command: user:process-tasks.md [task-file] NOSUBCONF
+
+    **Simplification Execution:**
+    - Command: simplify:process-plan.md [plan-file]
+    - Command: simplify:process-plan.md [plan-file] NOSUBCONF
+
+    **Quality Checks:**
+    - Git Branch Safety: Verifies you're on a feature branch, creates one if needed. Never works on main branch.
+    - Test Suite Integration: Uses TESTING.md/CLAUDE.md protocols. Tests run after each major step and parent task completion.
+    - Real-time Progress Tracking: Updates task checkboxes immediately after completion. No batching - real-time visibility.
+    - Stateless & Interruptible: All state stored in task files. Can interrupt, switch projects, and resume exactly where you left off.
+    - Conventional Commits: Uses structured commit messages with feat:/fix:/refactor: prefixes and detailed descriptions.
+    - NOSUBCONF Mode: Optional flag to skip sub-task confirmations for faster automated processing.
+
+    **Execution Philosophy:** One sub-task at a time with immediate progress updates. The system maintains perfect resumability by storing all state in the markdown task files themselves.
+
+- number: "5"
+  title: "Quality Review & Integration"
+  content: |
+    Multi-layered quality assurance with AI-assisted reviews and human oversight.
+
+    **Review Stages:**
+    - Initial Quality Review: Automated review of the complete changeset
+    - Feedback Integration: Claude Code evaluates and implements critical recommendations
+    - Pull Request Creation: Submit changes for team review
+    - PR Review: Additional Claude Code review on the pull request
+    - Manual Testing: Final human verification before merge
+
+    **Commands:**
+    - quality-review
+    - pr-review
+
+    **Smart Implementation:** Claude Code doesn't blindly implement all recommendations - it evaluates them and prioritizes serious concerns while maintaining code quality.
+
+- number: "6"
+  title: "Final Integration"
+  content: |
+    The final human-in-the-loop verification before merging changes to main.
+
+    **Final Steps:**
+    - Manual testing on the feature branch
+    - Visual and functional verification
+    - Final code review
+    - Merge pull request
+    - Clean up feature branch
+
+    **Human Oversight:** While the process is highly automated, human judgment remains critical for final quality assurance and user experience validation.

@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+<div class="agent-page">
+    <div class="agent-header">
+        <h1>{{ page.title }}</h1>
+        <p class="agent-description">{{ page.description }}</p>
+        
+        {% if page.model or page.color %}
+        <div class="agent-meta">
+            {% if page.model %}
+            <span class="agent-model">Model: {{ page.model }}</span>
+            {% endif %}
+            {% if page.color %}
+            <span class="agent-color" style="background-color: {{ page.color }};">{{ page.color }}</span>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        {% if page.specialization %}
+        <div class="agent-specialization">
+            <strong>Specialization:</strong> {{ page.specialization }}
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="agent-content">
+        {{ content }}
+    </div>
+    
+    <div class="agent-actions">
+        <a href="{{ '/agents/' | relative_url }}" class="btn btn-secondary">← Back to Agents</a>
+        <button class="btn btn-primary copy-button" onclick="copyAgentConfig()">Copy Configuration</button>
+    </div>
+</div>
+
+<script>
+function copyAgentConfig() {
+    const codeBlocks = document.querySelectorAll('pre code');
+    let content = '';
+    
+    codeBlocks.forEach(block => {
+        content += block.textContent + '\n\n';
+    });
+    
+    navigator.clipboard.writeText(content).then(() => {
+        const button = document.querySelector('.copy-button');
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 2000);
+    });
+}
+</script>
