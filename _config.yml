@@ -26,6 +26,16 @@ defaults:
       type: "pages"
     values:
       layout: "agent"
+  - scope:
+      path: ""
+      type: "commands"
+    values:
+      layout: "raw-command"
+  - scope:
+      path: ""
+      type: "agents"
+    values:
+      layout: "raw-agent"
 
 collections:
   commands:

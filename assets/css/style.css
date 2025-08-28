@@ -567,3 +567,176 @@ body {
         padding: 1rem;
     }
 }
+
+/* File display styles */
+.file-display {
+    margin: 2rem 0;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+}
+
+.file-header-bar {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.file-name {
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-weight: 600;
+}
+
+.file-size {
+    opacity: 0.8;
+    font-size: 0.8rem;
+}
+
+.file-content-container {
+    background: #1a202c;
+    overflow-x: auto;
+}
+
+.file-content-container pre {
+    margin: 0;
+    padding: 20px;
+    background: none;
+    color: #e2e8f0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.file-content-container code {
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.85rem;
+    background: none;
+    color: inherit;
+}
+
+.file-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.usage-info {
+    background: #f7fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.usage-info h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.usage-steps {
+    list-style: none;
+    counter-reset: step-counter;
+    margin: 1rem 0;
+}
+
+.usage-steps li {
+    counter-increment: step-counter;
+    margin: 0.8rem 0;
+    padding-left: 2.5rem;
+    position: relative;
+}
+
+.usage-steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #667eea;
+    color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.usage-steps code {
+    background: #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.85rem;
+}
+
+.workflow-tip {
+    background: #ebf8ff;
+    border: 2px solid #3182ce;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
+
+.workflow-tip strong {
+    color: #3182ce;
+}
+
+.workflow-tip code {
+    background: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.85rem;
+    border: 1px solid #bee3f8;
+}
+
+/* Copy notification */
+.copy-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #38a169;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .file-header-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .file-actions {
+        flex-direction: column;
+    }
+    
+    .usage-steps li {
+        padding-left: 2rem;
+    }
+    
+    .usage-steps li::before {
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 0.7rem;
+    }
+}

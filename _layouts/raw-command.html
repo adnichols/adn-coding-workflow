@@ -1,0 +1,116 @@
+---
+layout: default
+---
+
+<div class="command-page">
+    <div class="command-header">
+        <h1>{{ page.title }}</h1>
+        <p class="command-description">{{ page.description }}</p>
+        
+        {% if page.category %}
+        <div class="command-category">
+            <span class="category-badge {{ page.category }}">
+                {% if page.category == 'feature' %}🚀 Feature Development{% endif %}
+                {% if page.category == 'refactor' %}🔧 Refactoring{% endif %}
+            </span>
+        </div>
+        {% endif %}
+        
+        <div class="file-actions">
+            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy File Content</button>
+            <a href="data:text/plain;charset=utf-8,{{ page.content | uri_escape }}" download="{{ page.title }}" class="btn btn-secondary">💾 Download File</a>
+        </div>
+    </div>
+    
+    <div class="file-display">
+        <div class="file-header-bar">
+            <span class="file-name">{{ page.title }}</span>
+            <span class="file-size">{{ page.content | size }} characters</span>
+        </div>
+        <div class="file-content-container">
+            <pre><code class="language-markdown" id="file-content">{{ page.content | escape }}</code></pre>
+        </div>
+    </div>
+    
+    <div class="usage-info">
+        <h3>📖 How to Use</h3>
+        <ol class="usage-steps">
+            <li><strong>Copy the content:</strong> Click "📋 Copy File Content" above</li>
+            <li><strong>Create the file:</strong> In your project root, create <code>{{ page.title }}</code></li>
+            <li><strong>Paste the content:</strong> Paste the copied content into the file</li>
+            <li><strong>Use in Claude Code:</strong> The command will be available as <code>/{{ page.title | remove: '.md' }}</code></li>
+        </ol>
+        
+        {% if page.category == 'feature' %}
+        <div class="workflow-tip">
+            <strong>💡 Workflow Tip:</strong> This is a feature development command. Use it in sequence: 
+            <code>user:create-prd.md</code> → <code>user:generate-tasks.md</code> → <code>user:process-tasks.md</code>
+        </div>
+        {% endif %}
+        
+        {% if page.category == 'refactor' %}
+        <div class="workflow-tip">
+            <strong>💡 Workflow Tip:</strong> This is a refactoring command. Use it in sequence: 
+            <code>simplify:create-plan.md</code> → <code>simplify:process-plan.md</code>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="command-actions">
+        <a href="{{ '/commands/' | relative_url }}" class="btn btn-secondary">← Back to Commands</a>
+        <button class="btn btn-primary copy-button-secondary" onclick="copyFileContent()">📋 Copy Again</button>
+    </div>
+</div>
+
+<script>
+function copyFileContent() {
+    const fileContent = document.getElementById('file-content');
+    const content = fileContent.textContent;
+    
+    navigator.clipboard.writeText(content).then(() => {
+        // Update all copy buttons
+        document.querySelectorAll('.copy-button, .copy-button-secondary').forEach(button => {
+            const originalText = button.textContent;
+            button.textContent = '✅ Copied!';
+            button.style.background = '#38a169';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        });
+        
+        // Show success notification
+        showCopyNotification();
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        document.querySelectorAll('.copy-button, .copy-button-secondary').forEach(button => {
+            const originalText = button.textContent;
+            button.textContent = '❌ Error';
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        });
+    });
+}
+
+function showCopyNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'copy-notification';
+    notification.textContent = '✅ File content copied to clipboard!';
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateY(0)';
+    }, 100);
+    
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+</script>
