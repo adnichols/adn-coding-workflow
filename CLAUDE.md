@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This repository contains documentation for a structured AI-assisted software development workflow using Claude Code. The core asset is `claude-desktop-coding-workflow.html` - an interactive HTML documentation system that outlines a comprehensive development methodology with specialized agents and structured commands.
 
+This site is primarily used for a github pages site hosted at <https://adnichols.github.io/adn-coding-workflow/> . You should review that site after making changes to assure the change resulted in correct appearance and functionality
+
+The workflow described on this site is not necessarily used to maintain this repository
+
 ## Architecture Overview
 
 The workflow system is built around six main phases:
