@@ -1,133 +1,267 @@
 - number: "1"
   title: "Idea & Initial Specification"
   content: |
-    Every development cycle starts with an idea that gets refined into a formal specification.
-
-    **Process:**
-    - Start with a high-level idea or concept
-    - Use Claude (desktop or Claude Code) to expand into detailed specification
-    - Request structured Markdown documentation
-    - Review and refine the specification
-
-    **Key Files:**
-    - specification.md - Initial idea documentation
-    - requirements.md - Refined requirements
-
-    **Flexibility:** This step can be done in Claude desktop or Claude Code depending on your preference and current context.
+    <p>Every development cycle starts with an idea that gets refined into a formal specification.</p>
+    
+    <h4>Process:</h4>
+    <ul class="feature-list">
+        <li>Start with a high-level idea or concept</li>
+        <li>Use Claude (desktop or Claude Code) to expand into detailed specification</li>
+        <li>Request structured Markdown documentation</li>
+        <li>Review and refine the specification</li>
+    </ul>
+    
+    <h4>Key Files:</h4>
+    <ul class="file-list">
+        <li>specification.md - Initial idea documentation</li>
+        <li>requirements.md - Refined requirements</li>
+    </ul>
+    
+    <div class="highlight">
+        <strong>Flexibility:</strong> This step can be done in Claude desktop or Claude Code depending on your preference and current context.
+    </div>
 
 - number: "🤖"
   title: "Specialized Agents & Commands"
   content: |
-    The workflow leverages specialized agents and structured commands for different aspects of development.
-
-    **Command Structure:**
-    - **user:** Main feature development commands
-    - **simplify:** Code refactoring and cleanup commands
-    - **Arguments:** Support file paths and options like NOSUBCONF
-
-    **Specialized Agents:**
-    - **@simplify-planner (Opus):** Code archaeology specialist - identifies complexity accumulation, dead code paths, over-abstractions
-    - **@quality-reviewer:** Production risk assessor - focuses on data loss, security vulnerabilities, performance killers, concurrency bugs
-    - **Evidence-Based Approach:** Uses grep/glob analysis, deprecation markers, usage patterns for all decisions
-    - **ADR Documentation:** Creates Architecture Decision Records with cleanup rationale and safety evidence
+    <p>The workflow leverages specialized agents and structured commands for different aspects of development.</p>
+    
+    <h4>Command Structure:</h4>
+    <div class="branch-container">
+        <div class="branch feature">
+            <div class="branch-title">📋 Command Categories</div>
+            <ul class="feature-list">
+                <li><strong>user:</strong> Main feature development commands</li>
+                <li><strong>simplify:</strong> Code refactoring and cleanup commands</li>
+                <li><strong>Arguments:</strong> Support file paths and options like NOSUBCONF</li>
+            </ul>
+        </div>
+        
+        <div class="branch refactor">
+            <div class="branch-title">🤖 Specialized Agents</div>
+            <ul class="feature-list">
+                <li><strong>@simplify-planner (Opus):</strong> Code archaeology specialist - identifies complexity accumulation, dead code paths, over-abstractions</li>
+                <li><strong>@quality-reviewer:</strong> Production risk assessor - focuses on data loss, security vulnerabilities, performance killers, concurrency bugs</li>
+                <li><strong>Evidence-Based Approach:</strong> Uses grep/glob analysis, deprecation markers, usage patterns for all decisions</li>
+                <li><strong>ADR Documentation:</strong> Creates Architecture Decision Records with cleanup rationale and safety evidence</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h4>Agent-Specific Focus Areas:</h4>
+    <div class="branch-container">
+        <div class="branch feature">
+            <div class="branch-title">🔍 @simplify-planner Targets</div>
+            <ul class="feature-list">
+                <li><strong>Dead Code:</strong> Unreachable branches, deprecated features with clear markers</li>
+                <li><strong>Over-Abstraction:</strong> Unnecessary layers that add complexity without value</li>
+                <li><strong>Duplication:</strong> Logic that can be safely consolidated</li>
+                <li><strong>Legacy Patterns:</strong> Backward compatibility layers no longer needed</li>
+                <li><strong>Safety Circuit Breakers:</strong> Stops for confirmation on changes affecting >3 packages or core interfaces</li>
+            </ul>
+        </div>
+        
+        <div class="branch refactor">
+            <div class="branch-title">⚠️ @quality-reviewer Categories</div>
+            <ul class="feature-list">
+                <li><strong>MUST FLAG:</strong> Data loss risks, security vulnerabilities, performance killers, concurrency bugs</li>
+                <li><strong>WORTH RAISING:</strong> Logic errors, missing circuit breakers, resource leaks, unnecessary complexity</li>
+                <li><strong>IGNORE:</strong> Style preferences, theoretical edge cases, minor optimizations</li>
+                <li><strong>Focus:</strong> Real production failure risks, not theoretical problems</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h4>Complete Command Reference:</h4>
+    <ul class="command-list">
+        <li>user:create-prd.md - Generate PRD with clarifying questions</li>
+        <li>user:generate-tasks.md [prd-file] - Two-phase task generation</li>
+        <li>user:process-tasks.md [task-file] [NOSUBCONF] - Execute feature tasks</li>
+        <li>simplify:create-plan.md [target-area] - Multi-agent refactor planning</li>
+        <li>simplify:process-plan.md [plan-file] [NOSUBCONF] - Execute cleanup plan</li>
+    </ul>
+    
+    <div class="highlight">
+        <strong>Multi-Agent Orchestration:</strong> The system coordinates between specialized agents with distinct focuses - @simplify-planner for evidence-based complexity reduction and @quality-reviewer for production risk assessment. The @simplify-planner uses the more capable Opus model and creates detailed Architecture Decision Records (ADRs) with safety guarantees, while @quality-reviewer focuses specifically on issues that cause actual production failures rather than theoretical problems.
+    </div>
 
 - number: "2"
   title: "Architecture Review & Planning"
   content: |
-    The specification is reviewed by specialized architecture agents and turned into actionable plans.
-
-    **New Feature Path:**
-    - Command: user:create-prd.md
-    - Clarifying Questions: Claude asks structured questions with letter/number lists for easy responses
-    - Structured PRD: Generates comprehensive PRD with goals, user stories, requirements, success metrics
-    - Junior Dev Ready: Assumes target audience is a junior developer - explicit and unambiguous
-    - Interactive Refinement: Iterative process to ensure specification captures the full intent
-
-    **Refactoring Path:**
-    - Command: simplify:create-plan.md
-    - @simplify-planner (Opus): Code archaeology specialist, evidence-based cleanup recommendations
-    - @quality-reviewer: Reviews plan for production failure risks, safety validation
-    - Unconditional Preservation: Guarantees identical user-facing behavior after cleanup
-    - Safety Circuit Breakers: Stops for confirmation on risky changes (>3 packages, core interfaces)
-
-    **Output Files:**
-    - /tasks/prd-[feature-name].md - Product Requirements Document
-    - /tasks/simplify-plan-[area-name].md - Refactoring plan with safety protocols
+    <p>The specification is reviewed by specialized architecture agents and turned into actionable plans.</p>
+    
+    <div class="branch-container">
+        <div class="branch feature">
+            <div class="branch-title">🚀 New Feature Path</div>
+            <h4>Command:</h4>
+            <ul class="command-list">
+                <li>user:create-prd.md</li>
+            </ul>
+            <h4>Process:</h4>
+            <ul class="feature-list">
+                <li><strong>Clarifying Questions:</strong> Claude asks structured questions with letter/number lists for easy responses</li>
+                <li><strong>Structured PRD:</strong> Generates comprehensive PRD with goals, user stories, requirements, success metrics</li>
+                <li><strong>Junior Dev Ready:</strong> Assumes target audience is a junior developer - explicit and unambiguous</li>
+                <li><strong>Interactive Refinement:</strong> Iterative process to ensure specification captures the full intent</li>
+            </ul>
+        </div>
+        
+        <div class="branch refactor">
+            <div class="branch-title">🔧 Refactoring Path</div>
+            <h4>Command:</h4>
+            <ul class="command-list">
+                <li>simplify:create-plan.md</li>
+            </ul>
+            <h4>Multi-Agent Process:</h4>
+            <ul class="feature-list">
+                <li><strong>@simplify-planner (Opus):</strong> Code archaeology specialist, evidence-based cleanup recommendations</li>
+                <li><strong>@quality-reviewer:</strong> Reviews plan for production failure risks, safety validation</li>
+                <li><strong>Unconditional Preservation:</strong> Guarantees identical user-facing behavior after cleanup</li>
+                <li><strong>Safety Circuit Breakers:</strong> Stops for confirmation on risky changes (>3 packages, core interfaces)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h4>Output Files:</h4>
+    <ul class="file-list">
+        <li>/tasks/prd-[feature-name].md - Product Requirements Document</li>
+        <li>/tasks/simplify-plan-[area-name].md - Refactoring plan with safety protocols</li>
+    </ul>
 
 - number: "3"
   title: "Task List Generation"
   content: |
-    Plans are broken down into executable task lists using a sophisticated two-phase approach with different workflows for each path.
-
-    **New Feature Tasks:**
-    - Command: user:generate-tasks.md
-    - Phase 1: Generate ~5 high-level parent tasks
-    - Confirmation: Present tasks and wait for user "Go" approval
-    - Phase 2: Break down each parent into detailed sub-tasks
-    - Codebase Analysis: Reviews existing infrastructure and patterns
-
-    **Refactoring Tasks:**
-    No additional step needed! The plan created in step 2 already serves as a comprehensive task checklist with four phases:
-    - P1: Preparation and Safety Verification
-    - P2: Plan Review and Validation
-    - P3: Implementation Steps
-    - P4: Completion and Documentation
-
-    **Generated Files:**
-    - /tasks/tasks-[prd-file-name].md - Detailed implementation tasks with sub-tasks
-    - Relevant files section - Lists all files that need creation/modification
+    <p>Plans are broken down into executable task lists using a sophisticated two-phase approach with different workflows for each path.</p>
+    
+    <div class="branch-container">
+        <div class="branch feature">
+            <div class="branch-title">🚀 New Feature Tasks</div>
+            <h4>Command:</h4>
+            <ul class="command-list">
+                <li>user:generate-tasks.md</li>
+            </ul>
+            <h4>Two-Phase Process:</h4>
+            <ul class="feature-list">
+                <li><strong>Phase 1:</strong> Generate ~5 high-level parent tasks</li>
+                <li><strong>Confirmation:</strong> Present tasks and wait for user "Go" approval</li>
+                <li><strong>Phase 2:</strong> Break down each parent into detailed sub-tasks</li>
+                <li><strong>Codebase Analysis:</strong> Reviews existing infrastructure and patterns</li>
+            </ul>
+        </div>
+        
+        <div class="branch refactor">
+            <div class="branch-title">🔧 Refactoring Tasks</div>
+            <p><strong>No additional step needed!</strong></p>
+            <p>The plan created in step 2 already serves as a comprehensive task checklist with four phases:</p>
+            <ul class="feature-list">
+                <li><strong>P1:</strong> Preparation and Safety Verification</li>
+                <li><strong>P2:</strong> Plan Review and Validation</li>
+                <li><strong>P3:</strong> Implementation Steps</li>
+                <li><strong>P4:</strong> Completion and Documentation</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h4>Generated Files:</h4>
+    <ul class="file-list">
+        <li>/tasks/tasks-[prd-file-name].md - Detailed implementation tasks with sub-tasks</li>
+        <li>Relevant files section - Lists all files that need creation/modification</li>
+    </ul>
 
 - number: "4"
   title: "Automated Execution"
   content: |
-    The core implementation phase with sophisticated safety checks, git management, and resumable execution.
-
-    **Feature Implementation:**
-    - Command: user:process-tasks.md [task-file]
-    - Command: user:process-tasks.md [task-file] NOSUBCONF
-
-    **Simplification Execution:**
-    - Command: simplify:process-plan.md [plan-file]
-    - Command: simplify:process-plan.md [plan-file] NOSUBCONF
-
-    **Quality Checks:**
-    - Git Branch Safety: Verifies you're on a feature branch, creates one if needed. Never works on main branch.
-    - Test Suite Integration: Uses TESTING.md/CLAUDE.md protocols. Tests run after each major step and parent task completion.
-    - Real-time Progress Tracking: Updates task checkboxes immediately after completion. No batching - real-time visibility.
-    - Stateless & Interruptible: All state stored in task files. Can interrupt, switch projects, and resume exactly where you left off.
-    - Conventional Commits: Uses structured commit messages with feat:/fix:/refactor: prefixes and detailed descriptions.
-    - NOSUBCONF Mode: Optional flag to skip sub-task confirmations for faster automated processing.
-
-    **Execution Philosophy:** One sub-task at a time with immediate progress updates. The system maintains perfect resumability by storing all state in the markdown task files themselves.
+    <p>The core implementation phase with sophisticated safety checks, git management, and resumable execution.</p>
+    
+    <div class="branch-container">
+        <div class="branch feature">
+            <div class="branch-title">🚀 Feature Implementation</div>
+            <h4>Command:</h4>
+            <ul class="command-list">
+                <li>user:process-tasks.md [task-file]</li>
+                <li>user:process-tasks.md [task-file] NOSUBCONF</li>
+            </ul>
+        </div>
+        
+        <div class="branch refactor">
+            <div class="branch-title">🔧 Simplification Execution</div>
+            <h4>Command:</h4>
+            <ul class="command-list">
+                <li>simplify:process-plan.md [plan-file]</li>
+                <li>simplify:process-plan.md [plan-file] NOSUBCONF</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="quality-checks">
+        <div class="quality-check">
+            <h4>🌿 Git Branch Safety</h4>
+            <p>Verifies you're on a feature branch, creates one if needed. Never works on main branch.</p>
+        </div>
+        <div class="quality-check">
+            <h4>🧪 Test Suite Integration</h4>
+            <p>Uses TESTING.md/CLAUDE.md protocols. Tests run after each major step and parent task completion.</p>
+        </div>
+        <div class="quality-check">
+            <h4>✅ Real-time Progress Tracking</h4>
+            <p>Updates task checkboxes immediately after completion. No batching - real-time visibility.</p>
+        </div>
+        <div class="quality-check">
+            <h4>🔄 Stateless & Interruptible</h4>
+            <p>All state stored in task files. Can interrupt, switch projects, and resume exactly where you left off.</p>
+        </div>
+        <div class="quality-check">
+            <h4>📝 Conventional Commits</h4>
+            <p>Uses structured commit messages with feat:/fix:/refactor: prefixes and detailed descriptions.</p>
+        </div>
+        <div class="quality-check">
+            <h4>⚡ NOSUBCONF Mode</h4>
+            <p>Optional flag to skip sub-task confirmations for faster automated processing.</p>
+        </div>
+    </div>
+    
+    <div class="highlight">
+        <strong>Execution Philosophy:</strong> One sub-task at a time with immediate progress updates. The system maintains perfect resumability by storing all state in the markdown task files themselves.
+    </div>
 
 - number: "5"
   title: "Quality Review & Integration"
   content: |
-    Multi-layered quality assurance with AI-assisted reviews and human oversight.
-
-    **Review Stages:**
-    - Initial Quality Review: Automated review of the complete changeset
-    - Feedback Integration: Claude Code evaluates and implements critical recommendations
-    - Pull Request Creation: Submit changes for team review
-    - PR Review: Additional Claude Code review on the pull request
-    - Manual Testing: Final human verification before merge
-
-    **Commands:**
-    - quality-review
-    - pr-review
-
-    **Smart Implementation:** Claude Code doesn't blindly implement all recommendations - it evaluates them and prioritizes serious concerns while maintaining code quality.
+    <p>Multi-layered quality assurance with AI-assisted reviews and human oversight.</p>
+    
+    <h4>Review Stages:</h4>
+    <ul class="feature-list">
+        <li><strong>Initial Quality Review:</strong> Automated review of the complete changeset</li>
+        <li><strong>Feedback Integration:</strong> Claude Code evaluates and implements critical recommendations</li>
+        <li><strong>Pull Request Creation:</strong> Submit changes for team review</li>
+        <li><strong>PR Review:</strong> Additional Claude Code review on the pull request</li>
+        <li><strong>Manual Testing:</strong> Final human verification before merge</li>
+    </ul>
+    
+    <h4>Commands:</h4>
+    <ul class="command-list">
+        <li>quality-review</li>
+        <li>pr-review</li>
+    </ul>
+    
+    <div class="highlight">
+        <strong>Smart Implementation:</strong> Claude Code doesn't blindly implement all recommendations - it evaluates them and prioritizes serious concerns while maintaining code quality.
+    </div>
 
 - number: "6"
   title: "Final Integration"
   content: |
-    The final human-in-the-loop verification before merging changes to main.
-
-    **Final Steps:**
-    - Manual testing on the feature branch
-    - Visual and functional verification
-    - Final code review
-    - Merge pull request
-    - Clean up feature branch
-
-    **Human Oversight:** While the process is highly automated, human judgment remains critical for final quality assurance and user experience validation.
+    <p>The final human-in-the-loop verification before merging changes to main.</p>
+    
+    <h4>Final Steps:</h4>
+    <ul class="feature-list">
+        <li>Manual testing on the feature branch</li>
+        <li>Visual and functional verification</li>
+        <li>Final code review</li>
+        <li>Merge pull request</li>
+        <li>Clean up feature branch</li>
+    </ul>
+    
+    <div class="highlight">
+        <strong>Human Oversight:</strong> While the process is highly automated, human judgment remains critical for final quality assurance and user experience validation.
+    </div>
