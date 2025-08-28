@@ -336,83 +336,45 @@ body {
     white-space: pre-wrap;
 }
 
-.copy-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #667eea;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
+/* Legacy copy button styles - removed */
 
-.copy-button:hover {
-    background: #5a67d8;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
-}
-
-.copy-button:active {
-    transform: translateY(0);
-}
-
-.copy-button.copied {
-    background: #38a169;
-}
-
-.copy-feedback {
-    position: absolute;
-    top: 10px;
-    right: 120px;
-    background: #38a169;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-}
-
-.copy-feedback.show {
-    opacity: 1;
-}
+/* Legacy copy feedback styles - removed */
 
 /* Navigation styles */
 .nav {
-    background: #2d3748;
-    padding: 1rem 0;
+    background: none;
+    padding: 1rem 0 2rem 0;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 1rem;
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     padding: 0 1rem;
 }
 
 .nav a {
-    color: white;
+    color: #4a5568;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 6px;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    font-weight: 500;
 }
 
 .nav a:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #f7fafc;
+    color: #2d3748;
 }
 
 .nav a.active {
     background: #667eea;
+    color: white;
 }
 
 /* Footer styles */
