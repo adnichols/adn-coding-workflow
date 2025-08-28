@@ -17,7 +17,7 @@ This repository contains documentation and resources for a comprehensive develop
 Visit the [GitHub Pages site](https://anichols.github.io/adn-coding-workflow) for the complete interactive workflow documentation.
 
 ### Setup Commands
-Copy the command files to your project root directory:
+Copy the command files to your Claude Code commands directory:
 - `user:create-prd.md` - Generate Product Requirements Documents
 - `user:generate-tasks.md` - Create detailed task lists from PRDs
 - `user:process-tasks.md` - Execute implementation tasks with safety protocols

@@ -27,7 +27,7 @@ layout: default
         <h3>📖 How to Use</h3>
         <ol class="usage-steps">
             <li><strong>Copy the content:</strong> Click "📋 Copy File Content" above</li>
-            <li><strong>Create the file:</strong> In your project root, create <code>{{ page.title }}</code></li>
+            <li><strong>Create the file:</strong> In <code>~/.claude/commands/</code> (or <code>./.claude/commands/</code> for project-specific), create <code>{{ page.title }}</code></li>
             <li><strong>Paste the content:</strong> Paste the copied content into the file</li>
             <li><strong>Use in Claude Code:</strong> The command will be available as <code>/{{ page.title | remove: '.md' }}</code></li>
         </ol>

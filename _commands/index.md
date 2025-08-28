@@ -42,10 +42,10 @@ This section contains all the command files needed to implement the Claude Code 
 
 ## Setup Instructions
 
-**For Claude Code users:** Copy these command files to your project's root directory. The commands will then be available through Claude Code's slash command interface.
+**For Claude Code users:** Copy these command files to your Claude Code commands directory. The commands will then be available through Claude Code's slash command interface.
 
 **File Structure:**
-- Place all `user:*.md` and `simplify:*.md` files in your project root
+- Place all `user:*.md` and `simplify:*.md` files in `~/.claude/commands/` or `./.claude/commands/`
 - Create a `/tasks/` directory (will be used for generated PRDs and task lists)
 - Ensure your project has proper `TESTING.md` or `CLAUDE.md` files for test configuration
 
