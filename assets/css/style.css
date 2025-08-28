@@ -38,18 +38,6 @@ body {
     opacity: 0.9;
 }
 
-.version-info {
-    margin-top: 1rem;
-    opacity: 0.7;
-    font-size: 0.8rem;
-}
-
-.version-info small {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
-}
-
 .workflow {
     padding: 40px;
 }
@@ -425,6 +413,26 @@ body {
 
 .nav a.active {
     background: #667eea;
+}
+
+/* Footer styles */
+.site-footer {
+    margin-top: 3rem;
+    padding: 1rem 0;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+    color: #a0aec0;
+    font-size: 0.75rem;
+}
+
+.footer-content p {
+    margin: 0;
 }
 
 /* Button styles */

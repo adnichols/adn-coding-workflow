@@ -24,10 +24,6 @@ layout: default
         </div>
         {% endif %}
         
-        <div class="file-actions">
-            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy Agent Config</button>
-            <a href="data:text/plain;charset=utf-8,{{ page.content | uri_escape }}" download="{{ page.title }}.md" class="btn btn-secondary">💾 Download Config</a>
-        </div>
     </div>
     
     <div class="file-display">
@@ -36,7 +32,11 @@ layout: default
             <span class="file-size">{{ page.content | size }} characters</span>
         </div>
         <div class="file-content-container">
-            <pre><code class="language-markdown" id="file-content">{{ page.content | escape }}</code></pre>
+            <pre><code class="language-markdown" id="file-content">{{ page.raw_content | escape }}</code></pre>
+        </div>
+        <div class="file-actions">
+            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy Agent Config</button>
+            <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}.md" class="btn btn-secondary">💾 Download Config</a>
         </div>
     </div>
     
