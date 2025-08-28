@@ -1,5 +1,5 @@
 ---
-layout: command
+layout: raw-command
 title: "simplify:create-plan.md"
 description: "Creates evidence-based refactoring plans"
 category: "refactor"

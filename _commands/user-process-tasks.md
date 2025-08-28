@@ -1,5 +1,5 @@
 ---
-layout: command
+layout: raw-command
 title: "user:process-tasks.md"
 description: "Executes feature tasks with safety protocols"
 category: "feature"

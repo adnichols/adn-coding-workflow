@@ -1,5 +1,5 @@
 ---
-layout: command
+layout: raw-command
 title: "simplify:process-plan.md"
 description: "Executes refactoring plans with safety validation"
 category: "refactor"

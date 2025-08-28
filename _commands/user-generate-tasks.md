@@ -1,5 +1,5 @@
 ---
-layout: command
+layout: raw-command
 title: "user:generate-tasks.md"
 description: "Two-phase task generation from PRD"
 category: "feature"

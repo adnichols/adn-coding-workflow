@@ -1,5 +1,5 @@
 ---
-layout: command
+layout: raw-command
 title: "user:create-prd.md"
 description: "Creates PRD with interactive clarification questions"
 category: "feature"

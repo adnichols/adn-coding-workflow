@@ -1,5 +1,5 @@
 ---
-layout: agent
+layout: raw-agent
 title: "quality-reviewer"
 description: "Production risk assessment agent"
 model: "inherit"

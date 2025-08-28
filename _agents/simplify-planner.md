@@ -1,5 +1,5 @@
 ---
-layout: agent
+layout: raw-agent
 title: "simplify-planner"
 description: "Code archaeology specialist agent (Opus model)"
 model: "opus"
