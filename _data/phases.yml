@@ -122,6 +122,27 @@
         </div>
     </div>
     
+    <h4>📋 Command Examples:</h4>
+    <div class="branch-container">
+        <div class="branch feature">
+            <div class="branch-title">🚀 Feature Development</div>
+            <ul class="command-list">
+                <li><code>/user:create-prd.md</code> - Start with your feature idea</li>
+                <li><code>/user:create-prd.md</code> "Add user authentication system"</li>
+                <li><code>/user:create-prd.md</code> "Implement real-time notifications"</li>
+            </ul>
+        </div>
+        
+        <div class="branch refactor">
+            <div class="branch-title">🔧 Code Refactoring</div>
+            <ul class="command-list">
+                <li><code>/simplify:create-plan.md</code> - Analyze entire codebase</li>
+                <li><code>/simplify:create-plan.md src/auth/</code> - Focus on auth module</li>
+                <li><code>/simplify:create-plan.md components/legacy/</code> - Target legacy code</li>
+            </ul>
+        </div>
+    </div>
+    
     <h4>Output Files:</h4>
     <ul class="file-list">
         <li>/tasks/prd-[feature-name].md - Product Requirements Document</li>
@@ -159,6 +180,23 @@
                 <li><strong>P3:</strong> Implementation Steps</li>
                 <li><strong>P4:</strong> Completion and Documentation</li>
             </ul>
+        </div>
+    </div>
+    
+    <h4>📋 Command Examples:</h4>
+    <div class="branch-container">
+        <div class="branch feature">
+            <div class="branch-title">🚀 Feature Task Generation</div>
+            <ul class="command-list">
+                <li><code>/user:generate-tasks.md tasks/prd-user-auth.md</code></li>
+                <li><code>/user:generate-tasks.md tasks/prd-notifications.md</code></li>
+                <li><code>/user:generate-tasks.md tasks/prd-payment-system.md</code></li>
+            </ul>
+        </div>
+        
+        <div class="branch refactor">
+            <div class="branch-title">🔧 Refactoring (No Command Needed)</div>
+            <p>The <code>simplify:create-plan.md</code> from Phase 2 already includes executable task checklists.</p>
         </div>
     </div>
     
@@ -220,6 +258,27 @@
         </div>
     </div>
     
+    <h4>📋 Command Examples:</h4>
+    <div class="branch-container">
+        <div class="branch feature">
+            <div class="branch-title">🚀 Feature Implementation</div>
+            <ul class="command-list">
+                <li><code>/user:process-tasks.md tasks/tasks-user-auth.md</code> - Execute with confirmation</li>
+                <li><code>/user:process-tasks.md tasks/tasks-notifications.md NOSUBCONF</code> - Auto mode</li>
+                <li><code>/user:process-tasks.md tasks/tasks-payment-system.md</code> - Step-by-step</li>
+            </ul>
+        </div>
+        
+        <div class="branch refactor">
+            <div class="branch-title">🔧 Simplification Execution</div>
+            <ul class="command-list">
+                <li><code>/simplify:process-plan.md tasks/simplify-plan-auth.md</code> - Safe execution</li>
+                <li><code>/simplify:process-plan.md tasks/simplify-plan-legacy.md NOSUBCONF</code> - Automated</li>
+                <li><code>/simplify:process-plan.md tasks/simplify-plan-components.md</code> - Reviewed execution</li>
+            </ul>
+        </div>
+    </div>
+    
     <div class="highlight">
         <strong>Execution Philosophy:</strong> One sub-task at a time with immediate progress updates. The system maintains perfect resumability by storing all state in the markdown task files themselves.
     </div>
@@ -243,6 +302,34 @@
         <li>quality-review</li>
         <li>pr-review</li>
     </ul>
+    
+    <h4>📋 Command Examples:</h4>
+    <div class="quality-checks">
+        <div class="quality-check">
+            <h4>🔍 Quality Review Commands</h4>
+            <ul class="command-list">
+                <li><code>/quality-review</code> - Review current changeset</li>
+                <li><code>/quality-review --all</code> - Full repository analysis</li>
+                <li><code>/quality-review src/auth/</code> - Focus on specific module</li>
+            </ul>
+        </div>
+        <div class="quality-check">
+            <h4>🔄 PR Review Commands</h4>
+            <ul class="command-list">
+                <li><code>/pr-review</code> - Review current pull request</li>
+                <li><code>/pr-review #123</code> - Review specific PR number</li>
+                <li><code>/pr-review --security</code> - Focus on security issues</li>
+            </ul>
+        </div>
+        <div class="quality-check">
+            <h4>🚀 Integration Commands</h4>
+            <ul class="command-list">
+                <li><code>git push origin feature/user-auth</code> - Push feature branch</li>
+                <li><code>gh pr create --title "Add user authentication"</code> - Create PR</li>
+                <li><code>/pr-review</code> - Final review before merge</li>
+            </ul>
+        </div>
+    </div>
     
     <div class="highlight">
         <strong>Smart Implementation:</strong> Claude Code doesn't blindly implement all recommendations - it evaluates them and prioritizes serious concerns while maintaining code quality.
