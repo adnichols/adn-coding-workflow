@@ -10,6 +10,8 @@ This site is primarily used for a github pages site hosted at <https://adnichols
 
 The workflow described on this site is not necessarily used to maintain this repository
 
+You should think harder about any work on this repository
+
 ## Architecture Overview
 
 The workflow system is built around six main phases:
