@@ -415,6 +415,115 @@ body {
     background: #667eea;
 }
 
+/* Button styles */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5a67d8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.btn-secondary:hover {
+    background: #cbd5e0;
+}
+
+/* Command and Agent page styles */
+.command-page, .agent-page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.command-header, .agent-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.command-description, .agent-description {
+    font-size: 1.1rem;
+    color: #4a5568;
+    margin: 0.5rem 0;
+}
+
+.command-category {
+    margin: 1rem 0;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.category-badge.feature {
+    background: #48bb78;
+    color: white;
+}
+
+.category-badge.refactor {
+    background: #ed8936;
+    color: white;
+}
+
+.agent-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.agent-model {
+    background: #f7fafc;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.agent-specialization {
+    background: #f0fff4;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #48bb78;
+    margin: 1rem 0;
+}
+
+.command-content, .agent-content {
+    line-height: 1.6;
+    margin: 2rem 0;
+}
+
+.command-actions, .agent-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding-top: 1rem;
+    border-top: 2px solid #e2e8f0;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
     body {
@@ -448,5 +557,13 @@ body {
     
     .quality-checks {
         grid-template-columns: 1fr;
+    }
+    
+    .command-actions, .agent-actions {
+        flex-direction: column;
+    }
+    
+    .command-page, .agent-page {
+        padding: 1rem;
     }
 }

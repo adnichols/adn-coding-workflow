@@ -56,9 +56,9 @@ description: "A systematic approach to AI-assisted software development"
             <div class="branch feature">
                 <div class="branch-title">🚀 Feature Development</div>
                 <ul class="command-list">
-                    {% for command in site.data.commands %}
+                    {% for command in site.commands %}
                         {% if command.category == 'feature' %}
-                        <li><a href="{{ '/commands/' | append: command.name | remove: '.md' | append: '/' | relative_url }}">{{ command.name }}</a> - {{ command.description }}</li>
+                        <li><a href="{{ command.url | relative_url }}">{{ command.title }}</a> - {{ command.description }}</li>
                         {% endif %}
                     {% endfor %}
                 </ul>
@@ -67,9 +67,9 @@ description: "A systematic approach to AI-assisted software development"
             <div class="branch refactor">
                 <div class="branch-title">🔧 Code Refactoring</div>
                 <ul class="command-list">
-                    {% for command in site.data.commands %}
+                    {% for command in site.commands %}
                         {% if command.category == 'refactor' %}
-                        <li><a href="{{ '/commands/' | append: command.name | remove: '.md' | append: '/' | relative_url }}">{{ command.name }}</a> - {{ command.description }}</li>
+                        <li><a href="{{ command.url | relative_url }}">{{ command.title }}</a> - {{ command.description }}</li>
                         {% endif %}
                     {% endfor %}
                 </ul>
@@ -78,8 +78,8 @@ description: "A systematic approach to AI-assisted software development"
         
         <h4>Specialized Agents</h4>
         <ul class="feature-list">
-            {% for agent in site.data.agents %}
-            <li><a href="{{ '/agents/' | append: agent.name | append: '/' | relative_url }}">{{ agent.name }}</a> - {{ agent.specialization }}</li>
+            {% for agent in site.agents %}
+            <li><a href="{{ agent.url | relative_url }}">{{ agent.title }}</a> - {{ agent.specialization }}</li>
             {% endfor %}
         </ul>
         

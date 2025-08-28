@@ -11,13 +11,13 @@ This section contains all the command files needed to implement the Claude Code 
 ## Feature Development Commands
 
 <div class="resource-category">
-{% for command in site.data.commands %}
+{% for command in site.commands %}
 {% if command.category == 'feature' %}
 <div class="file-item">
     <div class="file-header">
-        <span class="file-name">{{ command.name }}</span>
+        <span class="file-name">{{ command.title }}</span>
         <span class="file-desc">{{ command.description }}</span>
-        <a href="{{ '/commands/' | append: command.name | remove: '.md' | append: '/' | relative_url }}" class="btn btn-primary">View Details</a>
+        <a href="{{ command.url | relative_url }}" class="btn btn-primary">View Details</a>
     </div>
 </div>
 {% endif %}
@@ -27,13 +27,13 @@ This section contains all the command files needed to implement the Claude Code 
 ## Code Refactoring Commands
 
 <div class="resource-category">
-{% for command in site.data.commands %}
+{% for command in site.commands %}
 {% if command.category == 'refactor' %}
 <div class="file-item">
     <div class="file-header">
-        <span class="file-name">{{ command.name }}</span>
+        <span class="file-name">{{ command.title }}</span>
         <span class="file-desc">{{ command.description }}</span>
-        <a href="{{ '/commands/' | append: command.name | remove: '.md' | append: '/' | relative_url }}" class="btn btn-primary">View Details</a>
+        <a href="{{ command.url | relative_url }}" class="btn btn-primary">View Details</a>
     </div>
 </div>
 {% endif %}

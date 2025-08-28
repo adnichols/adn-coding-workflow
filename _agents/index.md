@@ -11,16 +11,16 @@ This section contains the configuration files for specialized AI agents used in 
 ## Available Agents
 
 <div class="resource-category">
-{% for agent in site.data.agents %}
+{% for agent in site.agents %}
 <div class="file-item">
     <div class="file-header">
-        <span class="file-name">{{ agent.name }}.md</span>
+        <span class="file-name">{{ agent.title }}.md</span>
         <span class="file-desc">{{ agent.specialization }}</span>
         <div class="agent-meta">
             <span class="agent-model">{{ agent.model }}</span>
             <span class="agent-color" style="background-color: {{ agent.color }}; color: white; padding: 2px 8px; border-radius: 4px;">{{ agent.color }}</span>
         </div>
-        <a href="{{ '/agents/' | append: agent.name | append: '/' | relative_url }}" class="btn btn-primary">View Details</a>
+        <a href="{{ agent.url | relative_url }}" class="btn btn-primary">View Details</a>
     </div>
 </div>
 {% endfor %}
