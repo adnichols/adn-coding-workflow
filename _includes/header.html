@@ -1,4 +1,7 @@
 <div class="header">
     <h1>{{ page.title | default: site.title }}</h1>
     <p>{{ page.description | default: site.description }}</p>
+    <div class="version-info">
+        <small>Build: {{ site.time | date: "%Y-%m-%d %H:%M UTC" }} | Version: raw-content-v2</small>
+    </div>
 </div>
