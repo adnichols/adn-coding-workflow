@@ -26,24 +26,10 @@ layout: default
         
     </div>
     
-    <div class="file-display">
-        <div class="file-header-bar">
-            <span class="file-name">{{ page.title }}.md</span>
-            <span class="file-size">{{ page.content | size }} characters</span>
-        </div>
-        <div class="file-content-container">
-            <pre><code class="language-markdown" id="file-content">{{ page.raw_content | escape }}</code></pre>
-        </div>
-        <div class="file-actions">
-            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy Agent Config</button>
-            <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}.md" class="btn btn-secondary">💾 Download Config</a>
-        </div>
-    </div>
-    
     <div class="usage-info">
         <h3>🤖 How to Set Up This Agent</h3>
         <ol class="usage-steps">
-            <li><strong>Copy the config:</strong> Click "📋 Copy Agent Config" above</li>
+            <li><strong>Copy the config:</strong> Click "📋 Copy Agent Config" below the code block</li>
             <li><strong>Navigate to agents directory:</strong> Go to <code>~/.claude/agents/</code> (or your Claude Code agents directory)</li>
             <li><strong>Create the config file:</strong> Create <code>{{ page.title }}.md</code></li>
             <li><strong>Paste the content:</strong> Paste the copied configuration into the file</li>
@@ -57,6 +43,20 @@ layout: default
             {% elsif page.title == 'quality-reviewer' %}
             Used by <code>simplify:create-plan.md</code> and <code>quality-review</code> for safety validation.
             {% endif %}
+        </div>
+    </div>
+    
+    <div class="file-display">
+        <div class="file-header-bar">
+            <span class="file-name">{{ page.title }}.md</span>
+            <span class="file-size">{{ page.content | size }} characters</span>
+        </div>
+        <div class="file-content-container">
+            <pre><code class="language-markdown" id="file-content">{{ page.raw_content | escape }}</code></pre>
+        </div>
+        <div class="file-actions">
+            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy Agent Config</button>
+            <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}.md" class="btn btn-secondary">💾 Download Config</a>
         </div>
     </div>
     

@@ -18,20 +18,6 @@ layout: default
         
     </div>
     
-    <div class="file-display">
-        <div class="file-header-bar">
-            <span class="file-name">{{ page.title }}</span>
-            <span class="file-size">{{ page.content | size }} characters</span>
-        </div>
-        <div class="file-content-container">
-            <pre><code class="language-markdown" id="file-content">{{ page.raw_content | escape }}</code></pre>
-        </div>
-        <div class="file-actions">
-            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy File Content</button>
-            <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}" class="btn btn-secondary">💾 Download File</a>
-        </div>
-    </div>
-    
     <div class="usage-info">
         <h3>📖 How to Use</h3>
         <ol class="usage-steps">
@@ -54,6 +40,20 @@ layout: default
             <code>simplify:create-plan.md</code> → <code>simplify:process-plan.md</code>
         </div>
         {% endif %}
+    </div>
+    
+    <div class="file-display">
+        <div class="file-header-bar">
+            <span class="file-name">{{ page.title }}</span>
+            <span class="file-size">{{ page.content | size }} characters</span>
+        </div>
+        <div class="file-content-container">
+            <pre><code class="language-markdown" id="file-content">{{ page.raw_content | escape }}</code></pre>
+        </div>
+        <div class="file-actions">
+            <button class="btn btn-primary copy-button" onclick="copyFileContent()">📋 Copy File Content</button>
+            <a href="data:text/plain;charset=utf-8,{{ page.raw_content | uri_escape }}" download="{{ page.title }}" class="btn btn-secondary">💾 Download File</a>
+        </div>
     </div>
     
     <div class="command-actions">
